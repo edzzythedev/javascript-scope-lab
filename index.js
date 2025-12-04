@@ -6,58 +6,59 @@
 
 
 // STEP 1: CREATE GLOBAL VARIABLES
-// 'burgers' is declared using const and initialized with two strings.
+// These variables are in the global scope, so they can be accessed and modified by any function or block in this file.
+
+// The 'burgers' array is declared with const because the array itself will not be reassigned, even though its contents will change.
 const burgers = ['Hamburger', 'Cheeseburger'];
 
-// 'featuredDrink' is declared using let and initialized as a string.
+// The 'featuredDrink' string is declared with let because its value will be reassigned later.
 let featuredDrink = 'Strawberry Milkshake';
 
 
 // STEP 2: CREATE THE addBurger FUNCTION
-// This function will add a new burger to the global array.
+// This is a function-scoped block of code. It can access global variables but any variables created inside it are local to the function.
 function addBurger() {
-  // Creates a function-scoped variable named newBurger using const.
+  // 'newBurger' is a function-scoped variable. It cannot be accessed outside of this function.
   const newBurger = 'Flatburger';
 
-  // Uses the .push() method to add newBurger to the burgers array.
+  // We use the .push() method to add the value of newBurger to the global 'burgers' array.
   burgers.push(newBurger);
 }
 
 
 // STEP 3: CREATE THE BLOCK-SCOPED CODE
-// This if statement runs immediately because its condition is true.
+// The 'if' statement creates a block scope. Code inside these curly braces has its own private scope.
 if (true) {
-  // Creates a block-scoped variable named anotherNewBurger using const.
+  // 'anotherNewBurger' is a block-scoped variable. It only exists inside this 'if' block.
   const anotherNewBurger = 'Maple Bacon Burger';
 
-  // Uses the .push() method to add anotherNewBurger to the burgers array.
+  // We use the .push() method to add this block-scoped variable to the global 'burgers' array.
   burgers.push(anotherNewBurger);
 }
 
+
 // STEP 4: CREATE THE changeFeaturedDrink FUNCTION
-// This function will change the value of the global drink variable.
+// This function will access and modify the global 'featuredDrink' variable.
 function changeFeaturedDrink() {
-  // Changes the value of the featuredDrink variable.
+  // We reassign the value of the global variable to a new string.
   featuredDrink = 'The JavaShake';
 }
 
 
-// SECTION FOR TESTING AND DEMONSTRATION
-// The tests will call your functions to check if they work correctly.
-// You can leave this section as is or run it locally to see the output.
-
+// The testing section below is for your own local testing.
+// The automated tests on GitHub will call your functions directly to verify they work.
 console.log("Initial Burgers:", burgers);
 console.log("Initial Featured Drink:", featuredDrink);
 console.log(" ");
 
-// The 'if' block has already run.
+// The 'if' block runs immediately when the script is loaded.
 console.log("After the if block ran:", burgers);
 
-// Call the function to add the 'Flatburger'.
+// We call the function to add the 'Flatburger'.
 addBurger();
 console.log("After calling addBurger():", burgers);
 
-// Call the function to change the featured drink.
+// We call the function to change the featured drink.
 changeFeaturedDrink();
 console.log("After calling changeFeaturedDrink():", featuredDrink);
 
